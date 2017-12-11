@@ -1,0 +1,26 @@
+body {
+    background-image: url("../images/linedpaper.png");
+
+}
+
+.titleText {
+    font-family: 'Bangers', cursive;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 70px;
+}
+
+.cartoon {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #4F91CD;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.buttonRow {
+    margin-bottom: 40px;
+}
