@@ -12,7 +12,6 @@ body {
 
 .cartoon {
     font-family: 'Oxygen', sans-serif;
-    font-weight: bold;
     color: white;
     background-color: #4F91CD;
     border: none;
@@ -21,6 +20,12 @@ body {
     margin: 5px;
 }
 
-.buttonRow {
+form {
+    margin-top: 20px;
     margin-bottom: 40px;
+}
+
+.addText {
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
 }
