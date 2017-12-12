@@ -10,7 +10,8 @@ body {
     font-size: 70px;
 }
 
-.cartoon {
+.cartoon,
+.submitButton {
     font-family: 'Oxygen', sans-serif;
     color: white;
     background-color: #4F91CD;
