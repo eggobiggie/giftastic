@@ -23,42 +23,25 @@ function renderButtons() {
         }
     }
 
-    renderButtons();
-
-    //Button click for new cartoon add
-    $("#cartoon-add").on("click", function(event) {
-
-        event.preventDefault();
-
-        var cartoonAdd = $("#cartoon-input").val().trim();
-
-        topics.push(cartoonAdd);
-
-        renderButtons();
-
-    });
-
+renderButtons();
  
-//Click function to show gifs
-
+//Function to show gifs
 function displayCartoonGifs() {
 
-    $("button").on("click", function() {
+    $("#gifs-here").empty();
 
-        $("#gifs-here").empty();
-
-        var cartoonShow = $(this).attr("data-name");        
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=L19YkANp6EYJCHYMipXxsNPkUl4PLLKX&q=" + cartoonShow + "&limit=10&offset=0&rating=G&lang=en";
+    var cartoonShow = $(this).attr("data-name");        
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=L19YkANp6EYJCHYMipXxsNPkUl4PLLKX&q=" + cartoonShow + "&limit=10&offset=0&rating=G&lang=en";
               
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).done(function(response) {
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response) {
             
-            var results = response.data;
+        var results = response.data;
             
-            for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
 
             var gifDiv = $("<div class='item col-lg-4 col-md-4 col-sm-4'>");
             
@@ -74,7 +57,6 @@ function displayCartoonGifs() {
             cartoonImage.attr("data-state", "still");
             cartoonImage.addClass("img-responsive cartoonGif");
 
-            
             gifDiv.prepend(paragraph);
             gifDiv.prepend(cartoonImage);
             
@@ -87,21 +69,34 @@ function displayCartoonGifs() {
                     var newSrc = $(this).attr("data-animate");
                     $(this).attr("src", newSrc);
                     $(this).attr("data-state", "animate");
-                    console.log("Going")
                 } else {
                     var newSrc = $(this).attr("data-still");
                     $(this).attr("src", newSrc);
                     $(this).attr("data-state", "still");
-                    console.log("Not Going");
                 }
              });
 
-            }
+        }
             
-        });
-
     });
 }
+
+//Click function to run display cartoon gifs
+$(".cartoon").on("click", function() {
+
+    displayCartoonGifs();
+    
+});
+
+//Button click for new cartoon add
+$("#cartoon-add").on("click", function(event) {
+        
+    event.preventDefault();       
+    var cartoonAdd = $("#cartoon-input").val().trim();     
+    topics.push(cartoonAdd);     
+    renderButtons();
+        
+});
 
 $(document).on("click", ".cartoon", displayCartoonGifs);
 
