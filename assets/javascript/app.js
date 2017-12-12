@@ -2,9 +2,45 @@
 //List of Starter TV shows
 var topics = ["Rocko's Modern Life", "Daria", "Avatar The Last Airbender", "Steven Universe", "Bob's Burgers", "The Amazing World of Gumball", "Powerpuff Girls",
  "Over The Garden Wall", "Inspector Gadget", "Rugrats", "Regular Show"];
- 
+
+//Function to render buttons of array of topics  
+function renderButtons() {
+    
+        $("#buttons").empty();
+    
+        for (var i = 0; i < topics.length; i++) {
+    
+            var newButton = $("<button></button>");
+        
+            newButton.addClass("cartoon");
+    
+            newButton.attr("data-name", topics[i]);
+    
+            newButton.text(topics[i]);
+    
+            $("#buttons").append(newButton);
+    
+        }
+    }
+
+    renderButtons();
+
+    //Button click for new cartoon add
+    $("#cartoon-add").on("click", function(event) {
+
+        event.preventDefault();
+
+        var cartoonAdd = $("#cartoon-input").val().trim();
+
+        topics.push(cartoonAdd);
+
+        renderButtons();
+
+    });
+
  
 //Click function to show gifs
+
 function displayCartoonGifs() {
 
     $("button").on("click", function() {
@@ -36,27 +72,29 @@ function displayCartoonGifs() {
             cartoonImage.attr("data-still", results[i].images.fixed_height_still.url);
             cartoonImage.attr("data-animate", results[i].images.fixed_height.url);
             cartoonImage.attr("data-state", "still");
-
             cartoonImage.addClass("img-responsive cartoonGif");
+
             
             gifDiv.prepend(paragraph);
             gifDiv.prepend(cartoonImage);
             
             $("#gifs-here").prepend(gifDiv);
 
-            //Still images vs animating gifs
-            $(".cartoonGif").on("click", function() {
-               var state = $(this).attr("data-state");
-               if (state === "still") {
-                   var newSrc = $(this).attr("data-animate");
-                   $(this).attr("src", newSrc);
-                   $(this).attr("data-state", "animate");
-               } else {
-                   var newSrc = $(this).attr("data-still");
-                   $(this).attr("src", newSrc);
-                   $(this).attr("data-state", "still");
-               }
-            });
+             //Still images vs animating gifs
+             $(cartoonImage).on("click", function() {
+                var state = $(this).attr("data-state");
+                if (state === "still") {
+                    var newSrc = $(this).attr("data-animate");
+                    $(this).attr("src", newSrc);
+                    $(this).attr("data-state", "animate");
+                    console.log("Going")
+                } else {
+                    var newSrc = $(this).attr("data-still");
+                    $(this).attr("src", newSrc);
+                    $(this).attr("data-state", "still");
+                    console.log("Not Going");
+                }
+             });
 
             }
             
@@ -65,40 +103,6 @@ function displayCartoonGifs() {
     });
 }
 
-//Function to render buttons of array of topics  
-function renderButtons() {
-    
-        $("#buttons").empty();
-    
-        for (var i = 0; i < topics.length; i++) {
-    
-            var newButton = $("<button></button>");
-        
-            newButton.addClass("cartoon");
-    
-            newButton.attr("data-name", topics[i]);
-    
-            newButton.text(topics[i]);
-    
-            $("#buttons").append(newButton);
-    
-        }
-    }
+$(document).on("click", ".cartoon", displayCartoonGifs);
 
-    //Button click for new cartoon add
-    $("#cartoon-add").on("click", function(event) {
-
-        event.preventDefault();
-
-        var cartoonAdd = $("#cartoon-input").val().trim();
-
-        topics.push(cartoonAdd);
-
-        renderButtons();
-
-    });
-
-
-    $(document).on("click", ".cartoon", displayCartoonGifs);
-
-    renderButtons();
+renderButtons();
