@@ -9,7 +9,7 @@ function displayCartoonGifs() {
 
     $("button").on("click", function() {
 
-        $("gifs-here").empty();
+        $("#gifs-here").empty();
 
         var cartoonShow = $(this).attr("data-name");        
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=L19YkANp6EYJCHYMipXxsNPkUl4PLLKX&q=" + cartoonShow + "&limit=10&offset=0&rating=G&lang=en";
@@ -28,14 +28,14 @@ function displayCartoonGifs() {
             
             var rating = results[i].rating;
             
-            var p = $("<p>").text("Rating: " + rating);
+            var paragraph = $("<p>").text("Rating: " + rating);
             
             var cartoonImage = $("<img>");
             cartoonImage.attr("src", results[i].images.fixed_height.url);
 
             cartoonImage.addClass("img-responsive");
             
-            gifDiv.prepend(p);
+            gifDiv.prepend(paragraph);
             gifDiv.prepend(cartoonImage);
             
             $("#gifs-here").prepend(gifDiv);
@@ -62,7 +62,7 @@ function renderButtons() {
     
             newButton.text(topics[i]);
     
-            $("#buttons").prepend(newButton);
+            $("#buttons").append(newButton);
     
         }
     }
@@ -80,24 +80,25 @@ function renderButtons() {
 
     });
 
+
     $(document).on("click", ".cartoon", displayCartoonGifs);
 
     renderButtons();
 
 
     //Code for still/animate states of the gif
-    $(".cartoon").on("click", function() {
+    // $(".cartoon").on("click", function() {
 
-        let state = $(this).attr("data-state");
-        if (state === "still") {
-            let newSrc = $(this).attr("data-animate");
-            $(this).attr("src", newSrc);
-            $(this).attr("data-state", "animate");
-          } else {
-            let newSrc = $(this).attr("data-still");
-            $(this).attr("src", newSrc);
-            $(this).attr("data-state", "still");
-          }
+    //     let state = $(this).attr("data-state");
+    //     if (state === "still") {
+    //         let newSrc = $(this).attr("data-animate");
+    //         $(this).attr("src", newSrc);
+    //         $(this).attr("data-state", "animate");
+    //       } else {
+    //         let newSrc = $(this).attr("data-still");
+    //         $(this).attr("src", newSrc);
+    //         $(this).attr("data-state", "still");
+    //       }
 
-    });
+    // });
 
