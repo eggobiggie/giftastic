@@ -23,10 +23,21 @@ body {
 
 form {
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .addText {
     font-family: 'Bangers', cursive;
     font-size: 30px;
+}
+
+.explanationText {
+    font-family: 'Oxygen', sans-serif;
+    margin-top: 70px;
+    font-size: 20px;
+    color: #4F91CD; 
+}
+
+#buttons {
+    margin-bottom: 40px;
 }

@@ -1,4 +1,3 @@
-
 //List of Starter TV shows
 var topics = ["Rocko's Modern Life", "Daria", "Avatar The Last Airbender", "Steven Universe", "Bob's Burgers", "The Amazing World of Gumball", "Powerpuff Girls",
  "Over The Garden Wall", "Inspector Gadget", "Rugrats", "Regular Show"];
