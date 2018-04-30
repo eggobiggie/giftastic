@@ -30,8 +30,8 @@ function displayCartoonGifs() {
     $("#gifs-here").empty();
 
     var cartoonShow = $(this).attr("data-name");        
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=L19YkANp6EYJCHYMipXxsNPkUl4PLLKX&q=" + cartoonShow + "&limit=10&offset=0&rating=G&lang=en";
-              
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + GiphyKey + "&q=" + cartoonShow + "&limit=10&offset=0&rating=G&lang=en";
+    console.log(queryURL);
 
     $.ajax({
         url: queryURL,
