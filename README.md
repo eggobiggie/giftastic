@@ -14,4 +14,4 @@
 
 ![Teen Titans Go Button Search Image](./assets/images/giftastic3.png)
 
-Click [here](https://eggobiggie.github.io/giftastic/) to use Giftastic
+Click [here](https://eggobiggie.github.io/giftastic/) to use Giftastic. 
